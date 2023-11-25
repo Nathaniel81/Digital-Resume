@@ -1,4 +1,5 @@
 from typing import Any
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib import messages
 from .models import (
@@ -8,8 +9,9 @@ from .models import (
 		Testimonial,
 		Certificate
 	)
-
 from django.views import generic
+
+from .forms import ContactForm
 
 class Index(generic.TemplateView):
     template_name = 'core/index.html'
@@ -27,3 +29,14 @@ class Index(generic.TemplateView):
         context["portfolio"] = portfolio
 
         return context
+
+class Contact(generic.FormView):
+    template_name = 'core/contact.html'
+    form_class = ContactForm
+    success_url = '/'
+
+    def form_valid(self, form):
+        form.save()
+        messages.success(self.request, 'Thank you. We will be in touch soon.')
+        return super().form_valid(form)
+
