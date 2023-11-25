@@ -36,6 +36,25 @@ class ContactProfile(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+
+class Media(models.Model):
+    image = models.ImageField(blank=True, null=True, upload_to="media")
+    url = models.URLField(blank=True, null=True)
+    name = models.CharField(max_length=200, blank=True, null=True)
+    is_image = models.BooleanField(default=True)
+    
+    class Meta:
+        verbose_name_plural = 'Media Files'
+        verbose_name = 'Media'
+        ordering = ["name"]
+
+    def save(self, *args, **kwargs):
+        if self.url:
+            self.is_image = False
+        super(Media, self).save(*args, **kwargs)
+    def __str__(self):
+        return self.name
+
 class Testimonial(models.Model):
     thumbnail = models.ImageField(blank=True, null=True, upload_to="testimonials")
     name = models.CharField(max_length=200, blank=True, null=True)
@@ -107,7 +126,6 @@ class Certificate(models.Model):
     title = models.CharField(max_length=200, blank=True, null=True)
     description = models.CharField(max_length=500, blank=True, null=True)
     is_active = models.BooleanField(default=True)
-    
     class Meta:
         verbose_name_plural = 'Certificates'
         verbose_name = 'Certificate'
