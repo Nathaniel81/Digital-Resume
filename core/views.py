@@ -30,7 +30,6 @@ class Index(generic.TemplateView):
         context["portfolio"] = portfolio
 
         return context
-
 class Contact(generic.FormView):
     template_name = 'core/contact.html'
     form_class = ContactForm
@@ -40,7 +39,6 @@ class Contact(generic.FormView):
         form.save()
         messages.success(self.request, 'Thank you. We will be in touch soon.')
         return super().form_valid(form)
-
 class Portfolio(generic.ListView):
     model = Portfolio
     template_name = 'core/porfolio.html'
@@ -49,6 +47,10 @@ class Portfolio(generic.ListView):
     def get_queryset(self):
         return super().get_queryset().filter(is_active=True)
 
+class PortfolioDetail(generic.DetailView):
+    model = Portfolio
+    template_name = 'core/portfolio-detail.html'
+    
 class Blog(generic.ListView):
     model = Blog
     template_name = 'core/blog.html'
@@ -57,3 +59,6 @@ class Blog(generic.ListView):
     def get_queryset(self):
         return super().get_queryset().filter(is_active=True)
 
+class BlogDetail(generic.DetailView):
+	model = Blog
+	template_name = "core/blog-detail.html"
