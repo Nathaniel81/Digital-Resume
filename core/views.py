@@ -25,5 +25,5 @@ class Index(generic.TemplateView):
         context["certificates"] = certificates
         context["blogs"] = blogs
         context["portfolio"] = portfolio
-        print(context)
+
         return context
