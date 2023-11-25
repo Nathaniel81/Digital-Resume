@@ -1,4 +1,5 @@
 from typing import Any
+from django.db.models.query import QuerySet
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib import messages
@@ -47,3 +48,12 @@ class Portfolio(generic.ListView):
     
     def get_queryset(self):
         return super().get_queryset().filter(is_active=True)
+
+class Blog(generic.ListView):
+    model = Blog
+    template_name = 'core/blog.html'
+    paginate_by = 10
+    
+    def get_queryset(self):
+        return super().get_queryset().filter(is_active=True)
+
