@@ -1,0 +1,13 @@
+<form id="contactForm" method="POST" action="/contact/">
+	{% csrf_token %}
+		<label for="name">Name</label>
+		{{form.name}}
+
+		<label for="email">Email</label>
+		{{form.email}}
+
+		<label for="subject">Message</label>
+		{{form.message}}
+
+		<input class='btn btnPrimary' type="submit" value="Submit">
+</form>
