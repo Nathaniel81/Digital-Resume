@@ -19,14 +19,14 @@ class IndexView(generic.TemplateView):
 		certificates = Certificate.objects.filter(is_active=True)
 		blogs = Blog.objects.filter(is_active=True)
 		portfolio = Portfolio.objects.filter(is_active=True)
-		print(Blog.__dict__)
+		# print(Blog.__dict__)
 		
 		context["testimonials"] = testimonials
 		context["certificates"] = certificates
 		context["blogs"] = blogs
 		context["portfolio"] = portfolio
-		return context
 
+		return context
 class ContactView(generic.FormView):
 	template_name = "core/contact.html"
 	form_class = ContactForm
