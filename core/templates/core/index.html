@@ -1,16 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-</head>
-<body>
-	<ul>
-		{% for x in portfolio %}
-		<li>{{ x }}</li>
-		{% endfor %}
-	</ul>
-	
-</body>
-</html>
+{% extends 'theme/base.html' %}
+{% block content %}
+
+<section id="Hero" class="flex items-center mt-20 text-slate-300 text-sm">
+	<div class="container py-20">
+		<div class="flex justify-between items-center">
+			<div class="space-y-6">
+				<h1 class="text-7xl font-extrabold">Hello, I'm<br> a Backend Developer</h1>
+				<p class="max-w-md text-slate-300/75">I specialize in creating robust and efficient backend solutions to power modern web applications.</p>
+				<div class="cursor-pointer p-3 px-6 text-center w-40 pt-2 text-white bg-indigo-500 rounded-full baseline hover:bg-indigo-500/50">Explore Projects</div>
+			  </div>
+			  
+			<div class="flex items-center flex-col">
+				<div class="w-6 h-6 bg-indigo-500 rounded-full"></div>
+				<div class="h-12 border-l border-indigo-500"></div>
+				<div class="w-6 h-6 border-2 border-indigo-500 rounded-full"></div>
+				<div class="h-12 border-l border-indigo-500"></div>
+				<div class="w-6 h-6 border-2 border-indigo-500 rounded-full"></div>
+			</div>
+		</div>
+</section>
+
+<section id="skills" class="mt-20 text-slate-300 text-sm">
+	<div class="container py-20 space-y-5">
+		<div>
+			<h1 class="text-4xl font-bold py-3 text-indigo-500">Skills</h1>
+			<div class="w-24 h-1 bg-indigo-500"></div>
+		</div>
+		<div class="flex justify-between flex-wrap gap-3 items-center">
+			<div class="flex justify-between flex-wrap gap-4 items-center w-11/12">
+				{% for skill in skills %}
+				<div id="card-skill" class="w-auto h-auto max-w-xs max-h-80 flex flex-col gap-3 mb-3 text-start bg-slate-800 rounded-sm px-7 py-20">
+					<img src="{{ skill.image.url }}" alt="" class="w-9">
+					<!-- <div style="background-image: url('{{ skill.cover.url }}');"></div> -->
+					<div class="text-slate-200">{{ skill.name }}</div>
+					<p class="text-slate-300/75 max-w-xs">{{ skill.description }}</p>
+				</div>
+			{% endfor %}
+			
+			</div>
+			<div class="flex items-center flex-col">
+				<div class="w-6 h-6 border-2 border-indigo-500 rounded-full"></div>
+				<div class="h-12 border-l border-indigo-500"></div>
+				<div class="w-6 h-6 bg-indigo-500 rounded-full flex items-center justify-center"></div>
+				<div class="h-12 border-l border-indigo-500"></div>
+				<div class="w-6 h-6 border-2 border-indigo-500 rounded-full"></div>
+			</div>
+		</div>
+	</div>
+</section>
+<section id="contact" class="my-20 text-slate-300 text-sm">
+	<div class="container pb-5">
+		<div class="text-4xl font-bold py-3 text-indigo-500">Connect with me</div>
+		<div class="flex justify-between">
+			<form action="" class="space-y-4 flex-1">
+				<input type="email" class="my-3 px-4 py-3 rounded-sm w-1/2 bg-slate-800 placeholder:text-slate-300/75" placeholder="Email">
+				<input type="text" class="px-4 py-3 rounded-sm w-1/2 bg-slate-800 placeholder:text-slate-300/75" placeholder="Message">
+				<div class="cursor-pointer p-3 px-6 text-center w-40 pt-2 text-white bg-indigo-500 rounded-full baseline hover:bg-indigo-500/50">Submit</div>
+			</form>		
+			<div class="flex items-center flex-col">
+				<div class="w-6 h-6 border-2 border-indigo-500 rounded-full"></div>
+				<div class="h-12 border-l border-indigo-500"></div>
+				<div class="w-6 h-6 border-2 border-indigo-500 rounded-full"></div>
+				<div class="h-12 border-l border-indigo-500"></div>
+				<div class="w-6 h-6 bg-indigo-500 rounded-full"></div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock %}

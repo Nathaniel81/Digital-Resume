@@ -2,19 +2,45 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-    <title>Django Tailwind</title>
+    <title>Portfolio</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap">
 		{% tailwind_css %}
 	</head>
 
-	<body class="bg-gray-50 font-serif leading-normal tracking-normal">
-		<div class="container mx-auto">
-			<section class="flex items-center justify-center h-screen">
-				<h1 class="text-5xl">Django + Tailwind = ❤️</h1>
-				<h2>kkkkkkkk</h2>
-			</section>
-		</div>
+	<body class="bg-slate-900">
+		<section id="navigation" class="py-5 mt-1 text-slate-300 text-sm">
+			<div class="container">
+				<div class="flex justify-between items-center">
+					<div id="Brand" class="text-indigo-500 text-3xl">
+						LOGO
+						<!-- <img src="/src/Brand.png" alt="" style="width: 70px;"> -->
+					</div>
+					<div id="navs" class="flex space-x-10">
+						<a href="./index.html" class="hover:text-slate-100">Home</a>
+						<a href="./portfolio.html" class="hover:text-slate-100">Portfolio</a>
+						<a href="#" class="hover:text-slate-100">Blog</a>
+						<a href="#">
+							<span class="flex justify-between gap-5">
+								<div>
+									Contacts 
+								</div>
+								<div class="h-6 bg-slate-300" style="width: 2px;"></div>
+								<div class="flex gap-5">
+									<img src="{% static 'Github.svg' %}" alt="" width="19px;">
+									<img src="{% static 'Linkedin.svg' %}" alt="" width="23px;">
+									<img src="{% static 'Discord.svg' %}" alt="" width="23px;">
+								</div>
+							</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+		{% block content %}
+		
+		{% endblock %}
 	</body>
 </html>

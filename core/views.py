@@ -1,5 +1,6 @@
 from django.contrib import messages
 from .models import (
+		Skill,
 		Blog,
 		Portfolio,
 		Testimonial,
@@ -10,7 +11,7 @@ from django.views import generic
 from . forms import ContactForm
 
 class IndexView(generic.TemplateView):
-	template_name = "theme/base.html"
+	template_name = "core/index.html"
 
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
@@ -19,12 +20,13 @@ class IndexView(generic.TemplateView):
 		certificates = Certificate.objects.filter(is_active=True)
 		blogs = Blog.objects.filter(is_active=True)
 		portfolio = Portfolio.objects.filter(is_active=True)
-		# print(Blog.__dict__)
-		
+		skills = Skill.objects.all().order_by('-id')
+
 		context["testimonials"] = testimonials
 		context["certificates"] = certificates
 		context["blogs"] = blogs
 		context["portfolio"] = portfolio
+		context['skills'] = skills
 
 		return context
 class ContactView(generic.FormView):
